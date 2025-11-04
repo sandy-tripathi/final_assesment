@@ -326,127 +326,184 @@ a {
 }
 
 .testimonial-wrapper {
-            display: flex;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
+        display: flex; 
+        align-items: center;
+        background-color: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .testimonial-image {
+        flex: 1;
+        max-width: 45%; 
+    }
+    .testimonial-content {
+        flex: 1;
+        padding: 40px;
+    }
+    
+    
+    .image-placeholder {
+        position: relative;
+        cursor: pointer;
+        
+        clip-path: ellipse(130% 75% at 30% 50%);
+    }
+    
+    .image-placeholder img {
+        display: block;
+        width: 100%; 
+        height: auto; 
+    }
+    
+    .image-placeholder::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px;
+        height: 70px;
+        background-color: #0052cc;
+        border-radius: 50%;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+        z-index: 2;
+    }
+
+
+    .image-placeholder::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -50%); 
+        width: 0;
+        height: 0;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        border-left: 22px solid white;
+        z-index: 3;
+        transition: all 0.3s ease;
+    }
+    
+    
+    .image-placeholder:hover::before {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    .image-placeholder:hover::after {
+        transform: translate(-40%, -50%) scale(1.1);
+    }
+
+    
+    .video-overlay-text {
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        z-index: 2;
+    }
+    
+    .video-overlay-text h5 {
+        margin: 0 0 4px 0;
+        font-size: 1.2rem;
+    }
+    
+    .video-overlay-text p {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 300;
+    }
+    
+    
+    .testimonial-text {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+    .testimonial-author {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0;
+    }
+    .testimonial-position {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 4px 0 20px 0;
+    }
+    .testimonial-link {
+        color: #0052cc;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .testimonial-link i {
+        margin-left: 5px;
+    }
+
+    
+    @media (max-width: 768px) { 
+        .testimonial-wrapper {
+            flex-direction: column; 
+            text-align: center; 
+        }
         .testimonial-image {
-            flex: 1;
-            max-width: 45%;
+            max-width: 100%; 
+            border-radius: 12px 12px 0 0; 
+            clip-path: none; 
+        }
+        .image-placeholder {
+            clip-path: none; 
+            border-radius: 12px 12px 0 0; 
         }
         .testimonial-content {
-            flex: 1;
-            padding: 40px;
+            padding: 30px 20px; 
+            width: 100%; 
         }
-        
-        /* --- STYLES TO CREATE THE VIDEO "FORMAT" --- */
-        
-        .image-placeholder {
-            position: relative; /* This is the key */
-            cursor: pointer;
-            /* This mimics the curved corner from your screenshot */
-            clip-path: ellipse(130% 75% at 30% 50%);
-        }
-        
-        .image-placeholder img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-        
-        /* The Blue Play Button */
-        .image-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background-color: #0052cc; /* A blue color */
-            border-radius: 50%;
-            opacity: 0.9;
-            transition: all 0.3s ease;
-            z-index: 2;
-        }
-
-        /* The white "play" triangle inside the button */
-        .image-placeholder::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-40%, -50%); /* Nudge to center */
-            width: 0;
-            height: 0;
-            border-top: 12px solid transparent;
-            border-bottom: 12px solid transparent;
-            border-left: 22px solid white;
-            z-index: 3;
-            transition: all 0.3s ease;
-        }
-        
-        /* Hover effect */
-        .image-placeholder:hover::before {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        .image-placeholder:hover::after {
-            transform: translate(-40%, -50%) scale(1.1);
-        }
-
-        /* The text overlay */
         .video-overlay-text {
-            position: absolute;
-            bottom: 25px;
-            left: 25px;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-            z-index: 2;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%); 
+            width: 100%;
+            text-align: center;
         }
-        
-        .video-overlay-text h5 {
-            margin: 0 0 4px 0;
-            font-size: 1.2rem;
+         .video-overlay-text h5 {
+            font-size: 1.1rem;
         }
-        
         .video-overlay-text p {
-            margin: 0;
-            font-size: 0.9rem;
-            font-weight: 300;
+            font-size: 0.85rem;
         }
         
-        /* --- End of new styles --- */
-        
-        /* Styles for the quote content */
+        .image-placeholder::before {
+            width: 60px;
+            height: 60px;
+        }
+        .image-placeholder::after {
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 18px solid white;
+        }
+    }
+
+    @media (max-width: 480px) { 
+        .testimonial-content {
+            padding: 20px 15px;
+        }
         .testimonial-text {
-            font-size: 1.25rem;
-            font-weight: 500;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
         }
-        .testimonial-author {
-            font-size: 1rem;
-            font-weight: 700;
-            margin: 0;
+        .image-placeholder::before {
+            width: 50px;
+            height: 50px;
         }
-        .testimonial-position {
-            font-size: 0.9rem;
-            color: #555;
-            margin: 4px 0 20px 0;
+        .image-placeholder::after {
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 15px solid white;
         }
-        .testimonial-link {
-            color: #0052cc;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .testimonial-link i {
-            margin-left: 5px;
-        }
-.products {
+    }.products {
     padding: var(--spacing-2xl) 0;
     background-color: var(--bg-white);
 }
